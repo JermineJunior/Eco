@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto">
+    <div class="flex items-center justify-evenly">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
 
@@ -49,5 +49,6 @@
                 </div>
             </div>
         </div>
+        <img class="w-64 h-full px-2"  src="{{ asset('images/pass.svg') }}" alt="welcome" >
     </div>
 @endsection
