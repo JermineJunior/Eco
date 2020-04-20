@@ -18,4 +18,11 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+     /** @test*/
+    public function only_admins_can_view_admin_dashboard()
+    {
+        $response = $this->get('/admin');
+        $response->assertStatus(302);
+    }
 }
