@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class=" flex items-center justify-evenly">
+    <div class="container mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white rounded shadow-md">
 
-                    <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
+                    <div class="font-semibold bg-gray-200 text-gray-700 py-2 px-6 mb-0">
                         {{ __('Register') }}
                     </div>
 
-                    <form class="w-full p-6" method="POST" action="{{ route('register') }}">
+                    <form class="w-full p-4 rounded-md shadow" method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="flex flex-wrap mb-6">
@@ -80,6 +80,5 @@
                 </div>
             </div>
         </div>
-        <img class="w-64 h-full px-2"  src="{{ asset('images/register.svg') }}" alt="welcome" >
     </div>
 @endsection

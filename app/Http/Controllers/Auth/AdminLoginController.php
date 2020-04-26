@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
@@ -23,14 +24,19 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
-       request()->validate(
-           [
+       request()->validate([
                'email' => ['required','email'] ,
                 'password' => ['required','min:6']
            ]);
+       if(Auth::guard('admin')->attempt($this->credentials(),request('remember')))
+       {
+           return redirect()->intended(route('admin.dash'));
+       }
+        return  redirect()->back()->withInput([ request()->only('email','remember')] );
+    }
 
-        $this->attemptLogin($request);
-
-        return redirect('admin');
+    protected function credentials()
+    {
+        return request()->only('email', 'password');
     }
 }

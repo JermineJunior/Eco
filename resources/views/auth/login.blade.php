@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center justify-evenly">
+    <div class="container mx-auto ">
         <div class="flex flex-wrap justify-center rounded-lg">
             <div class="w-full max-w-sm">
-                <div class="flex flex-col break-words bg-gray-100 shadow-md">
+                <div class="flex flex-col break-words rounded-md bg-gray-100 shadow-lg">
 
                     <div class="font-semibold bg-gray-100 text-gray-800 py-3 px-6 mb-0">
                         {{ __('Login') }}
@@ -73,7 +73,5 @@
                 </div>
             </div>
         </div>
-        <img class="w-48 h-128 px-2 shadow rounded"  src="{{ asset('images/login.svg') }}" alt="welcome" >
     </div>
 @endsection
- 

@@ -24,6 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('/admin')->group(function () {
     Route::get('/login' , 'Auth\AdminLoginController@showLoginForm');
     Route::post('/login' , 'Auth\AdminLoginController@login')->name('admin.login');
-    Route::get('/', 'AdminsController@index')->name('admin');
+    Route::get('/', 'AdminsController@index')->name('admin.dash');
 });
 
