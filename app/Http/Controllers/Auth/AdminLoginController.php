@@ -32,7 +32,14 @@ class AdminLoginController extends Controller
        {
            return redirect()->intended(route('admin.dash'));
        }
-        return  redirect()->back()->withInput([ request()->only('email','remember')] );
+        return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        
+        return redirect('/admin');
     }
 
     protected function credentials()
