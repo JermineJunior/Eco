@@ -258,6 +258,13 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
+.worksans {
+    font-family: 'Work Sans', sans-serif;
+}
+        
+#menu-toggle:checked + #menu {
+    display: block;
+}
 
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
