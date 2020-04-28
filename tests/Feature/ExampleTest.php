@@ -23,10 +23,12 @@ class ExampleTest extends TestCase
     /** @test */
     public function admins_can_view_admin_dash()
     {
-      $this->actingAs(factory(Admin::class)->create());
+        $admin = factory(Admin::class)->create();
 
-      $response = $this->get('/admin')
-                   ->assertStatus(302); //bug here search it 
+        $response = $this->actingAs($admin, 'admin')
+            ->get('/admin');
+
+        $response->assertStatus(200);
     }
 
     /** @test */
