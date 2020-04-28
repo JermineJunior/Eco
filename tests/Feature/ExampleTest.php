@@ -2,27 +2,47 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\{Admin,User,Product};
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
+    use RefreshDatabase;
+   
      /** @test*/
     public function only_admins_can_view_admin_dashboard()
     {
-        $response = $this->get('/admin');
-        $response->assertStatus(302);
+    
+        $this->signIn();
+   
+        $response = $this->get('/admin')
+                ->assertStatus(302);
     }
+
+    /** @test */
+    public function admins_can_view_admin_dash()
+    {
+      $this->actingAs(factory(Admin::class)->create());
+
+      $response = $this->get('/admin')
+                   ->assertStatus(302); //bug here search it 
+    }
+
+    /** @test */
+    public function users_can_view_products()
+    {
+        $this->signIn();
+
+        $product = factory(Product::class)->create();
+
+        $response  = $this->get('/home')
+               ->assertSee($product->title);
+    }
+
+    protected function signIn()
+    {
+        $this->actingAs(factory(User::class)->create());
+    }
+
 }

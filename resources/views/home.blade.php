@@ -3,16 +3,15 @@
 @section('content')
     <div class="flex items-center sm:mx-4">
         <div class="md:w-1/2 md:mx-auto">
-
-            @if (session('status'))
-                <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
-                    {{ session('status') }}
-                </div>
+        @if (session('status'))
+            <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
+                {{ session('status') }}
+            </div>
         @endif
         <div class="px-2">
             <h3>Products:</h3>
             <div class=" flex items-center flex-wrap">
-                @foreach ($products as $item)
+                @forelse ($products as $item)
                     <div class="sm:w-full md:w-1/3 lg:w-1/3 xl:w-1/4 p-6 flex flex-col">
                         <a href="#">
                             <img class="hover:shadow-lg" src="{{ asset('images/phone-1.jpg') }}">
@@ -26,7 +25,12 @@
                             <p class="pt-1 text-gray-900">£{{ $item->price }}</p>
                         </a>
                     </div>
-                    @endforeach
+                    @empty
+                      <div class="text-red-500 text-center py-4 px-3">
+                         <span>No Products Yet .. Sorry </span>
+                      </div>
+                    @endforelse
+
             </div>
         </div>
       </div>
