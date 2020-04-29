@@ -28,9 +28,7 @@ class AdminLoginController extends Controller
                'email' => ['required','email'] ,'password' => ['required','min:6']
            ]);
        if(Auth::guard('admin')->attempt($this->credentials(),request('remember')))
-       {
            return redirect()->intended(route('admin.dash'));
-       }
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 

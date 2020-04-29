@@ -40,6 +40,7 @@ class AuthTest extends TestCase
         $response  = $this->get('/home')
                ->assertSee($product->title);
     }
+
     /** @test */
     public function admins_can_logout()
     {
@@ -52,16 +53,16 @@ class AuthTest extends TestCase
 
     }
     
-        /** @test */
-        public function users_can_logout()
-        {
-            $this->signIn();
+    /** @test */
+    public function users_can_logout()
+    {
+        $this->signIn();
 
-            $response = $this->get('user/logout');
-    
-            $response = $this->get('/home')
-                 ->assertStatus(302);
-        }
+        $response = $this->get('user/logout');
+
+        $response = $this->get('/home')
+                ->assertStatus(302);
+    }
     
     /** @test */
     public function logingout_users_dosnt_logout_admins()
@@ -75,7 +76,7 @@ class AuthTest extends TestCase
              ->assertStatus(200);
     }
 
-
+    
     /**  to sign in a user */
     protected function signIn()
     {
