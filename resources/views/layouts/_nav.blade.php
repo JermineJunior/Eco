@@ -46,7 +46,7 @@
                 </svg>
             </a>
 
-            <a href="{{ route('logout') }}"
+            <a href="{{ route('user.logout') }}"
                class="no-underline hover:underline text-indigo-500 text-sm p-3"
                onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

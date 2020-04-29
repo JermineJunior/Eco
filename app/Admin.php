@@ -2,8 +2,5 @@
 
 namespace App;
 
-
 class Admin extends Auth
-{
-
-}
+{}

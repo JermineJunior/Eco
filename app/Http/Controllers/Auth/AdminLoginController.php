@@ -15,7 +15,7 @@ class AdminLoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest:admin')->except('logout');
     }
     public function showLoginForm()
     {
@@ -25,8 +25,7 @@ class AdminLoginController extends Controller
     public function login(Request $request)
     {
        request()->validate([
-               'email' => ['required','email'] ,
-                'password' => ['required','min:6']
+               'email' => ['required','email'] ,'password' => ['required','min:6']
            ]);
        if(Auth::guard('admin')->attempt($this->credentials(),request('remember')))
        {
@@ -39,7 +38,7 @@ class AdminLoginController extends Controller
     {
         Auth::guard('admin')->logout();
         
-        return redirect('/admin');
+        return redirect('/');
     }
 
     protected function credentials()
