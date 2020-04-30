@@ -16,3 +16,5 @@ Route::prefix('/admin')->group(function () {
     Route::get('/', 'AdminsController@index')->name('admin.dash');
 });
 
+Route::get('/products', 'ProductController@index')->name('products');
+

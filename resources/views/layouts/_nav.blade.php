@@ -13,7 +13,7 @@
         <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
             <nav>
                 <ul class="md:flex items-center justify-between text-base text-indigo-500 pt-4 md:pt-0">
-                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('home') }}">Shop</a></li>
+                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('products') }}">Shop</a></li>
                 </ul>
             </nav>
         </div>
