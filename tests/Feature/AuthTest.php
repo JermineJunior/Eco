@@ -37,7 +37,7 @@ class AuthTest extends TestCase
 
         $product = factory(Product::class)->create();
 
-        $response  = $this->get('/home')
+        $response  = $this->get('/products')
                ->assertSee($product->title);
     }
 
@@ -77,19 +77,19 @@ class AuthTest extends TestCase
     }
 
     
-    /**  to sign in a user */
-    protected function signIn()
-    {
-        $this->actingAs(factory(User::class)->create());
-    }
-
-    /** login admins */
-
-    protected function signInAdmin()
-    {
-        $admin = factory(Admin::class)->create();
-
-        $this->actingAs($admin, 'admin');
-    }
+     /**  to sign in a user */
+     protected function signIn()
+     {
+         $this->actingAs(factory(User::class)->create());
+     }
+ 
+     /** login admins */
+ 
+     protected function signInAdmin()
+     {
+         $admin = factory(Admin::class)->create();
+ 
+         $this->actingAs($admin, 'admin');
+     }
 
 }

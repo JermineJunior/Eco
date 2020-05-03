@@ -3,14 +3,18 @@
 namespace Tests\Unit;
 
 use App\Product;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ExampleTest extends TestCase
+class ProductTes extends TestCase
 {
-
-  /** @test */
-  public function name()
-  {
-        $this->assertEquals(Product::class,'App\Product');
-  }
+   use RefreshDatabase;
+  
+   /** @test */
+   public function it_has_a_path()
+   {
+      $product = factory('App\Product')->create();
+      
+      $response = $this->assertEquals('products/'.$product->id,$product->path());
+   }
 }
