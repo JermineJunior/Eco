@@ -16,7 +16,7 @@ class AuthTest extends TestCase
         $this->signIn();
    
         $response = $this->get('/admin')
-                ->assertStatus(302);
+                ->assertStatus(302); 
     }
 
     /** @test */
